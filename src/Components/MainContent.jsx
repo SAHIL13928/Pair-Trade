@@ -8,43 +8,19 @@ function MainContent() {
 
   return (
     <div className="flex-1 bg-gray-100 p-6 relative">
-      {/* Timeline Buttons */}
-      <div className="absolute top-1 right-12 flex border border-blue-800 rounded-full overflow-hidden">
-        <button 
-          className={`py-1 px-3 bg-white border-blue-800 ${timeline === '1h' ? 'bg-gray-200' : 'bg-blue-600 text-blue-600'}`}
-          onClick={() => setTimeline('1h')}
-        >
-          1h
-        </button>
-        <button 
-          className={`py-1 px-3 bg-white border-blue-800 ${timeline === '2h' ? 'bg-gray-200' : 'bg-blue-600 text-blue-600'}`}
-          onClick={() => setTimeline('2h')}
-        >
-          2h
-        </button>
-        <button 
-          className={`py-1 px-3 bg-white border-blue-800 ${timeline === '10h' ? 'bg-gray-200' : 'bg-blue-600 text-blue-600'}`}
-          onClick={() => setTimeline('10h')}
-        >
-          10h
-        </button>
-        <button 
-          className={`py-1 px-3 bg-white border-blue-800 ${timeline === '24h' ? 'bg-gray-200' : 'bg-blue-600 text-blue-600'}`}
-          onClick={() => setTimeline('24h')}
-        >
-          24h
-        </button>
-      </div>
-
-      <div className="flex-1 bg-gray-100 p-6">
-        {/* Grid Header */}
+      <div className="max-w-[62%] mr-auto">
         <div className="grid grid-cols-4 gap-4">
+          {/* Stock X */}
           <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 rounded-[50px] shadow relative">
             <h3 className="text-white text-center font-bold">Stock X</h3>
           </div>
+
+          {/* Stock Y */}
           <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 rounded-[50px] shadow relative">
             <h3 className="text-white text-center font-bold">Stock Y</h3>
           </div>
+
+          {/* Algo Score */}
           <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 rounded-[50px] shadow relative">
             <h3 className="text-white text-center font-bold">Algo Score</h3>
             <button 
@@ -59,124 +35,89 @@ function MainContent() {
               </div>
             )}
           </div>
-          <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 rounded-[50px] shadow relative">
-            <h3 className="text-white text-center font-bold">Residue Score</h3>
-            <button 
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full p-3"
-              onClick={() => setShowPopup({ ...showPopup, residue: !showPopup.residue })}
-            >
-              <FontAwesomeIcon icon={faInfoCircle} className="text-white text-lg" />
-            </button>
-            {showPopup.residue && (
-              <div className="absolute right-2 top-12 w-48 bg-white border border-blue-600 p-2 rounded shadow-lg">
-                <p className="text-blue-600">Definition of Residue Score.</p>
-              </div>
-            )}
-          </div>
-        </div>
 
-         {/* Merged Row 1 */}
-         <div className="bg-white p-4 rounded-xl shadow mt-6 col-span-4">
-          <div className="grid text-center grid-cols-4 gap-5">
-            <div className="flex flex-col items-center">
-              <p className="font-bold">PEPSI</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$995</p>
-                <p className="text-green-500">+24%</p>
-              </div>
+          {/* Residue Score */}
+          <div className="relative">
+            {/* Timeline Buttons */}
+            <div className="absolute -top-10 left-0 flex  border border-blue-800 rounded-full overflow-hidden mt-1">
+              <button 
+                className={`py-1 px-3 ${timeline === '1h' ? 'bg-gray-200' : ' text-blue-600'}`}
+                onClick={() => setTimeline('1h')}
+              >
+                1h
+              </button>
+              <button 
+                className={`py-1 px-2 ${timeline === '2h' ? 'bg-gray-200' : ' text-blue-600'}`}
+                onClick={() => setTimeline('2h')}
+              >
+                2h
+              </button>
+              <button 
+                className={`py-1 px-3 ${timeline === '10h' ? 'bg-gray-200' : ' text-blue-600'}`}
+                onClick={() => setTimeline('10h')}
+              >
+                10h
+              </button>
+              <button 
+                className={`py-1 px-3 ${timeline === '24h' ? 'bg-gray-200' : ' text-blue-600'}`}
+                onClick={() => setTimeline('24h')}
+              >
+                24h
+              </button>
             </div>
-            <div className="flex flex-col items-center">
-              <p className="font-bold">COKE</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$962</p>
-                <p className="text-red-500">-51%</p>
-              </div>
-            </div>
-            <div>
-              <p className="font-bold">87.1%</p>
-            </div>
-            <div>
-              <p className="font-bold">56</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Merged Row 2 */}
-        <div className="bg-white p-4 rounded-xl shadow mt-6 col-span-4">
-          <div className="grid text-center grid-cols-4 gap-4">
-            <div className="flex flex-col items-center">
-              <p className="font-bold">YAHOO</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$642</p>
-                <p className="text-green-500">+17%</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <p className="font-bold">GOOGLE</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$241</p>
-                <p className="text-red-500">-31%</p>
-              </div>
-            </div>
-            <div>
-              <p className="font-bold">59%</p>
-            </div>
-            <div>
-              <p className="font-bold">78</p>
+            <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 rounded-[50px] shadow relative">
+              <h3 className="text-white text-center font-bold">Residue Scor</h3>
+              <button 
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full p-3"
+                onClick={() => setShowPopup({ ...showPopup, residue: !showPopup.residue })}
+              >
+                <FontAwesomeIcon icon={faInfoCircle} className="text-white text-lg" />
+              </button>
+              {showPopup.residue && (
+                <div className="absolute right-2 top-12 w-48 bg-white border border-blue-600 p-2 rounded shadow-lg">
+                  <p className="text-blue-600">Definition of Residue Score.</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Merged Row 3 */}
-        <div className="bg-white p-4 rounded-xl shadow mt-6 col-span-4">
-          <div className="grid text-center grid-cols-4 gap-4">
-            <div className="flex flex-col items-center">
-              <p className="font-bold">AMAZON</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$3,400</p>
-                <p className="text-green-500">+12%</p>
+        {/* Merged Rows */}
+        
+        {[ 
+          { stock1: 'PEPSI', price1: 995, change1: 24, stock2: 'COKE', price2: 962, change2: -51, algo: '87.1%', residue: 56 },
+          { stock1: 'YAHOO', price1: 642, change1: 17, stock2: 'GOOGLE', price2: 241, change2: -31, algo: '59%', residue: 78 },
+          { stock1: 'AMAZON', price1: 3400, change1: 12, stock2: 'APPLE', price2: 175, change2: -8, algo: '72.5%', residue: 45 },
+          { stock1: 'TESLA', price1: 650, change1: 20, stock2: 'MICROSOFT', price2: 290, change2: -5, algo: '65.3%', residue: 45 }
+        ].map((row, index) => (
+          <div key={index} className="bg-white p-4 rounded-xl shadow mt-6 col-span-4">
+            <div className="grid text-center grid-cols-4 gap-5">
+              {/* Stock 1 */}
+              <div className="flex flex-col items-center">
+                <p className="font-bold">{row.stock1}</p>
+                <div className="flex items-baseline">
+                  <p className="mr-4">${row.price1}</p>
+                  <p className={`text-${row.change1 > 0 ? 'green' : 'red'}-500`}>
+                    {row.change1 > 0 ? '+' : ''}{row.change1}%
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <p className="font-bold">APPLE</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$175</p>
-                <p className="text-red-500">-8%</p>
+              {/* Stock 2 */}
+              <div className="flex flex-col items-center">
+                <p className="font-bold">{row.stock2}</p>
+                <div className="flex items-baseline">
+                  <p className="mr-4">${row.price2}</p>
+                  <p className={`text-${row.change2 > 0 ? 'green' : 'red'}-500`}>
+                    {row.change2 > 0 ? '+' : ''}{row.change2}%
+                  </p>
+                </div>
               </div>
-            </div>
-            <div>
-              <p className="font-bold">72.5%</p>
-            </div>
-            <div>
-              <p className="font-bold">45</p>
+              {/* Algo and Residue */}
+              <div className="font-bold">{row.algo}</div>
+              <div className="font-bold">{row.residue}</div>
             </div>
           </div>
-        </div>
-         {/* Merged Row 4 */}
-         <div className="bg-white p-4 rounded-xl shadow mt-6 col-span-4">
-          <div className="grid text-center grid-cols-4 gap-4">
-            <div className="flex flex-col items-center">
-              <p className="font-bold">TESLA</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$650</p>
-                <p className="text-green-500">+20%</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <p className="font-bold">MICROSOFT</p>
-              <div className="flex items-baseline">
-                <p className="mr-4">$290</p>
-                <p className="text-red-500">-5%</p>
-              </div>
-            </div>
-            <div>
-              <p className="font-bold">65.3%</p>
-            </div>
-            <div>
-              <p className="font-bold">45</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
