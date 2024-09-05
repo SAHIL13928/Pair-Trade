@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
   return (
     <div className="flex items-center justify-center bg-gray-100 p-4 shadow">
-      <div className="relative w-full max-w-4xl">  {/* Increased width for a longer search bar */}
+      <div className="relative w-full max-w-6.2xl">  {/* Increased width for a longer search bar */}
         <input 
           type="text" 
           className="w-full p-4 pl-24 rounded-full border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
