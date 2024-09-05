@@ -1,34 +1,33 @@
-import React from 'react';
-import { FaTachometerAlt, FaTrophy, FaUser } from 'react-icons/fa'; // Example icons, add more as needed
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartLine, faHistory, faQuestionCircle, faBook } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar() {
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const menuItems = [
+    { name: 'Present Trades', icon: faChartLine },
+    { name: 'Past Trades', icon: faHistory },
+    { name: "FAQ's", icon: faQuestionCircle },
+    { name: 'Learn P.T.', icon: faBook },
+  ];
+
   return (
-    <div className="w-64 bg-gray-100 p-6 h-screen"> {/* Use gray background and full height */}
-      <h2 className="text-2xl font-bold mb-6">PAIRTRADING.IN</h2>
-      <nav className="space-y-4">
-        <a 
-          href="#" 
-          className="flex items-center text-gray-700 hover:bg-white hover:rounded-md p-3 transition-colors duration-200 group"
+    <div className="w-1/6 bg-gray-100 p-4">
+      <div className="mb-4 font-bold text-xl">PairTrader.com</div>
+      {menuItems.map((item, index) => (
+        <div
+          key={index}
+          onMouseEnter={() => setHoveredItem(index)}
+          onMouseLeave={() => setHoveredItem(null)}
+          className={`p-2 text-lg rounded-xl flex items-center ${
+            hoveredItem === index ? 'bg-white ' : ''
+          }`}
         >
-          <FaTachometerAlt className="mr-3 group-hover:text-blue-500 transition-colors duration-200" /> {/* Icon turns blue */}
-          <span className="group-hover:text-gray-700 transition-colors duration-200">My Profile</span> {/* Text stays gray */}
-        </a>
-        <a 
-          href="#" 
-          className="flex items-center text-gray-700 hover:bg-white hover:rounded-md p-3 transition-colors duration-200 group"
-        >
-          <FaTrophy className="mr-3 group-hover:text-blue-500 transition-colors duration-200" /> {/* Icon turns blue */}
-          <span className="group-hover:text-gray-700 transition-colors duration-200">Dashboard</span> {/* Text stays gray */}
-        </a>
-        <a 
-          href="#" 
-          className="flex items-center text-gray-700 hover:bg-white hover:rounded-md p-3 transition-colors duration-200 group"
-        >
-          <FaUser className="mr-3 group-hover:text-blue-500 transition-colors duration-200" /> {/* Icon turns blue */}
-          <span className="group-hover:text-gray-700 transition-colors duration-200">FAQs</span> {/* Text stays gray */}
-        </a>
-        {/* Add more links as needed */}
-      </nav>
+          <FontAwesomeIcon icon={item.icon} className="mr-3" />
+          {item.name}
+        </div>
+      ))}
     </div>
   );
 }

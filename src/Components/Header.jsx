@@ -1,20 +1,21 @@
 import React from 'react';
-import { FaSearch } from 'react-icons/fa'; // Import the search icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+const Header = () => {
   return (
-    <header className="flex justify-center items-center p-6 bg-gray-100 shadow">
-      <div className="relative flex items-center w-full max-w-xl"> 
+    <div className="flex items-center justify-center bg-gray-100 p-4 shadow">
+      <div className="relative w-full max-w-4xl">  {/* Increased width for a longer search bar */}
         <input 
           type="text" 
+          className="w-full p-4 pl-24 rounded-full border border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
           placeholder="Search..." 
-          className="w-full p-3 pr-20 rounded-full bg-white outline-none ring-2 ring-blue-700" // Added focus ring
         />
-        <div className="absolute right-0 mr-2 p-2 px-4 rounded-full bg-blue-700 flex items-center justify-center"> 
-          <FaSearch className="text-white" />
-        </div>
+        <button className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-blue-600 rounded-full px-6  py-3 flex items-center justify-center">
+          <FontAwesomeIcon icon={faSearch} className="text-white h-5 w-5" />
+        </button>
       </div>
-    </header>
+    </div>
   );
 }
 
