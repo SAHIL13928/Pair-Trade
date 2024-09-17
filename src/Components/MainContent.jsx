@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -74,29 +74,42 @@ function MainContent() {
               key={index} 
               to={`/stocks/${row.stock1.toLowerCase()}/${row.stock2.toLowerCase()}`}
               state={{ row }} // Pass the entire row data via state
-              className="p-4 block border-b last:border-b-0 hover:bg-gray-200 transition-all duration-200 cursor-pointer"
+              className="block border-b last:border-b-0 transition-all duration-200 cursor-pointer hover:bg-gray-200 hover:shadow-lg hover:scale-105"
             >
-              <div className="grid text-center grid-cols-4">
-                <div className="flex flex-col items-center">
-                  <p className="font-bold text-xl mb-1">{row.stock1}</p>
+              <div className="grid grid-cols-4 text-center">
+                {/* Stock 1 */}
+                <div 
+                  className={`flex flex-col items-center p-4 ${row.change1 > 0 ? 'bg-green-500' : 'bg-red-500'}`}
+                  style={{ margin: 0 }}
+                >
+                  <p className="font-bold text-xl text-white">{row.stock1}</p>
                   <div className="flex items-center space-x-2">
-                    <p className="text-sm">${row.price1}</p>
-                    <p className={`text-${row.change1 > 0 ? 'green' : 'red'}-500 text-xs`}>
+                    <p className="text-sm text-white">${row.price1}</p>
+                    <p className={`text-xs text-white`}>
                       {row.change1 > 0 ? '+' : ''}{row.change1}%
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col items-center">
-                  <p className="font-bold text-xl mb-1">{row.stock2}</p>
+
+                {/* Stock 2 */}
+                <div 
+                  className={`flex flex-col items-center p-4 ${row.change2 > 0 ? 'bg-green-500' : 'bg-red-500'}`}
+                  style={{ margin: 0 }}
+                >
+                  <p className="font-bold text-xl text-white">{row.stock2}</p>
                   <div className="flex items-center space-x-2">
-                    <p className="text-sm">${row.price2}</p>
-                    <p className={`text-${row.change2 > 0 ? 'green' : 'red'}-500 text-xs`}>
+                    <p className="text-sm text-white">${row.price2}</p>
+                    <p className={`text-xs text-white`}>
                       {row.change2 > 0 ? '+' : ''}{row.change2}%
                     </p>
                   </div>
                 </div>
-                <div className="font-bold text-xl">{row.algo}</div>
-                <div className="font-bold text-xl">{row.residue}</div>
+
+                {/* Algo Score */}
+                <div className="font-bold text-xl p-4">{row.algo}</div>
+
+                {/* Residue Score */}
+                <div className="font-bold text-xl p-4">{row.residue}</div>
               </div>
             </Link>
           ))}
