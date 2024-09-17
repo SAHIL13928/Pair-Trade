@@ -68,6 +68,16 @@ function StockDetails() {
           </div>
         </div>
 
+        {/* Separate Row for BUY@, SHORT@, Target%, RR@ */}
+        <div className="rounded-lg border border-gray-300 bg-white shadow-lg mb-6 p-4">
+          <div className="grid text-center grid-cols-4">
+            <div className="font-bold text-xl">BUY @ ${row.buyPrice}</div>
+            <div className="font-bold text-xl">SHORT @ ${row.shortPrice}</div>
+            <div className="font-bold text-xl">Target % {row.targetPercentage}%</div>
+            <div className="font-bold text-xl">RR {row.rrRatio}</div>
+          </div>
+        </div>
+
         {/* Graph Section */}
         <div className="bg-white p-4 shadow rounded-lg mb-6">
           <h3 className="text-lg font-bold mb-4 text-center">Price Changes in Last 24 Hours</h3>
@@ -82,8 +92,8 @@ function StockDetails() {
           </div>
         </div>
 
-         {/* Formula Row */}
-         <div className="bg-white p-4 shadow rounded-lg mb-6">
+        {/* Formula Row */}
+        <div className="bg-white p-4 shadow rounded-lg mb-6">
           <h3 className="text-lg font-bold mb-4 text-center">Trading Formula</h3>
           <div className="grid grid-cols-4 text-center items-center">
             <div className="col-span-4">

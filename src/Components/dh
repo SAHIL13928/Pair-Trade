@@ -1,0 +1,40 @@
+{/* Formula Row */}
+         <div className="bg-white p-4 shadow rounded-lg mb-6">
+          <h3 className="text-lg font-bold mb-4 text-center">Trading Formula</h3>
+          <div className="grid grid-cols-4 text-center items-center">
+            <div className="col-span-4">
+              <p className="font-bold text-xl">PEPSI = 2 COKE + 5 + RESIDUAL</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Past Trades Table */}
+        <div className="bg-white p-4 shadow rounded-lg">
+          <h3 className="text-lg font-bold mb-4 text-center">Past Trades (Last 30 Days)</h3>
+          <table className="min-w-full table-auto">
+            <thead>
+              <tr>
+                <th className="border-b text-left p-2">Date</th>
+                <th className="border-b text-left p-2">Stock</th>
+                <th className="border-b text-left p-2">Action</th>
+                <th className="border-b text-left p-2">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* Dummy Data for Past Trades */}
+              <tr>
+                <td className="border-b p-2">2024-09-10</td>
+                <td className="border-b p-2">{row.stock1}</td>
+                <td className="border-b p-2">BUY</td>
+                <td className="border-b p-2">$950</td>
+              </tr>
+              <tr>
+                <td className="border-b p-2">2024-09-09</td>
+                <td className="border-b p-2">{row.stock2}</td>
+                <td className="border-b p-2">SELL</td>
+                <td className="border-b p-2">$960</td>
+              </tr>
+              {/* Add more dummy rows as needed */}
+            </tbody>
+          </table>
+        </div>
