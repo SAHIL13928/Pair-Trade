@@ -41,12 +41,45 @@ function StockDetails() {
   return (
     <div className="page-container p-6 min-h-screen">
       <div className="max-w-[62%] mr-auto">
+        {/* Trading Formula Section */}
+        <div className=" bg-white shadow rounded-lg border-2 mb-4 h-auto">
+  {/* Content of the box */}
+  <div className="pt-4 pb-4 px-4">
+    <div className="grid grid-cols-4 h-full">
+      {/* Top-left: Regression Equation */}
+      <div className="col-span-2 flex items-start justify-start">
+        <p className="font-bold pl-48">Regression Equation </p>
+      </div>
+
+      {/* Middle content (spanning full width) */}
+      <div className="col-span-4 text-center py-3">
+        <p className="text-2xl pl-2">PEPSI = 2 COKE + 5 + RESIDUAL</p>
+      </div>
+
+      {/* Bottom-left: Correlation */}
+      <div className="col-span-2 flex items-end justify-start">
+        <p className="font-bold pl-48">Correlation: 0.95</p>
+      </div>
+
+      {/* Bottom-right: Co-integration */}
+      <div className="col-span-2 flex items-end justify-end">
+        <p className="font-bold mr-48">Co-integration: 0.05</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
         {/* First Row (Similar to MainContent) */}
         <div className="rounded-lg border-2  bg-white mb-5 p-0">
           <div className="grid text-center grid-cols-4 gap-0">
             {/* Stock 1 */}
             <div className={`flex flex-col items-center p-4 ${row.change1 > 0 ? 'bg-green-500' : 'bg-red-500'} text-white`} style={{ margin: 0 }}>
-              <p className="font-bold text-xl mb-1">{row.stock1}</p>
+              <p className=" text-2xl mb-1">{row.stock1}</p>
               <div className="flex items-center space-x-2">
                 <p className="text-sm">${row.price1}</p>
                 <p className={`text-xs ${row.change1 > 0 ? 'text-green-300' : 'text-red-300'}`}>
@@ -57,7 +90,7 @@ function StockDetails() {
             
             {/* Stock 2 */}
             <div className={`flex flex-col items-center p-4 ${row.change2 > 0 ? 'bg-green-500' : 'bg-red-500'} text-white`} style={{ margin: 0 }}>
-              <p className="font-bold text-xl mb-1">{row.stock2}</p>
+              <p className=" text-2xl mb-1">{row.stock2}</p>
               <div className="flex items-center space-x-2">
                 <p className="text-sm">${row.price2}</p>
                 <p className={`text-xs ${row.change2 > 0 ? 'text-green-300' : 'text-red-300'}`}>
@@ -67,12 +100,12 @@ function StockDetails() {
             </div>
             
             {/* Algo Score */}
-            <div className="font-bold text-xl p-4">
+            <div className=" text-2xl p-4">
               {row.algo}
             </div>
             
             {/* Residue Score */}
-            <div className="font-bold text-xl p-4">
+            <div className=" text-2xl p-4">
               
                 {row.residue}
               
@@ -83,10 +116,10 @@ function StockDetails() {
         {/* Second Row for BUY@, SHORT@, Target%, RR@ */}
         <div className="rounded-lg border bg-white mb-5 p-0">
           <div className="grid text-center grid-cols-4 gap-0">
-            <div className="font-bold text-xl p-4">{`BUY @ ${row.buyPrice}`}</div>
-            <div className="font-bold text-xl p-4">{`SHORT @ ${row.shortPrice}`}</div>
-            <div className="font-bold text-xl p-4">{`Target % ${row.targetPercentage}`}</div>
-            <div className="font-bold text-xl p-4">{`RR ${row.rrRatio}`}</div>
+            <div className=" text-xl p-4">{`BUY @ ${row.buyPrice}`}</div>
+            <div className=" text-xl p-4">{`SHORT @ ${row.shortPrice}`}</div>
+            <div className=" text-xl p-4">{`Target % ${row.targetPercentage}`}</div>
+            <div className=" text-xl p-4">{`RR ${row.rrRatio}`}</div>
           </div>
         </div>
 
@@ -102,22 +135,7 @@ function StockDetails() {
           />
         </div>
 
-        {/* Trading Formula Section */}
-        <div className="relative bg-white shadow rounded-lg border-2  mb-4 h-30">
-          {/* Blue strip with gradient and heading */}
-          <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white text-center py-2 rounded-t-lg">
-            <h3 className="text-lg font-bold">Trading Formula</h3>
-          </div>
-          {/* Content of the box */}
-          <div className="pt-12 pb-6 px-4">
-            <div className="grid grid-cols-4 text-center items-center">
-              <div className="col-span-4">
-                <p className="font-bold py-3 text-xl">PEPSI = 2 COKE + 5 + RESIDUAL</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+       
         {/* Past Trades Table */}
         <div className="bg-white shadow rounded-lg border-2  ">
           <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-3 rounded-t-lg">
