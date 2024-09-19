@@ -49,7 +49,8 @@ function MainContent() {
 
         {/* Header Row */}
         <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-4 shadow rounded-2xl">
-          <div className="grid grid-cols-4 text-center items-center">
+          <div className="grid grid-cols-5 text-center items-center">
+            <h3 className="text-white font-bold text-xl">#</h3> {/* Serial Number Header */}
             <h3 className="text-white font-bold text-xl">Stock X</h3>
             <h3 className="text-white font-bold text-xl">Stock Y</h3>
             <div className="relative">
@@ -67,53 +68,57 @@ function MainContent() {
           </div>
         </div>
 
-       {/* Data Rows */}
-<div className="rounded-lg bg-white">
-  {stockRows.map((row, index) => (
-    <Link 
-      key={index} 
-      to={`/stocks/${row.stock1.toLowerCase()}/${row.stock2.toLowerCase()}`}
-      state={{ row }} // Pass the entire row data via state
-      className="block transition-all duration-200 cursor-pointer hover:bg-gray-200 hover:shadow-lg hover:scale-105"
-    >
-      {/* Add a white border between rows */}
-      <div className="grid grid-cols-4 text-center border-b border-white">
-        {/* Stock 1 */}
-        <div 
-          className={`flex flex-col rounded-xl items-center p-4 ${row.change1 > 0 ? 'bg-green-500' : 'bg-red-500'}`}
-        >
-          <p className="font text-2xl text-white">{row.stock1}</p>
-          <div className="flex items-center space-x-2">
-            <p className="text-sm text-white">${row.price1}</p>
-            <p className={`text-xs text-white`}>
-              {row.change1 > 0 ? '+' : ''}{row.change1}%
-            </p>
-          </div>
+        {/* Data Rows */}
+        <div className="rounded-lg bg-white">
+          {stockRows.map((row, index) => (
+            <Link 
+              key={index} 
+              to={`/stocks/${row.stock1.toLowerCase()}/${row.stock2.toLowerCase()}`}
+              state={{ row }} // Pass the entire row data via state
+              className="block transition-all duration-200 cursor-pointer hover:bg-gray-200 hover:shadow-lg hover:scale-105"
+            >
+              {/* Add a white border between rows */}
+              <div className="grid grid-cols-5 text-center border-b border-white">
+                {/* Serial Number */}
+                <div className="w-1/12"> {/* 1/4th of the width of other columns */}
+                  {index + 1}
+                </div>
+                
+                {/* Stock 1 */}
+                <div 
+                  className={`flex flex-col rounded-xl items-center p-4 ${row.change1 > 0 ? 'bg-green-500 bg-opacity-70' : 'bg-red-500 bg-opacity-30'}`}
+                >
+                  <p className="font text-2xl text-white">{row.stock1}</p>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-sm text-white">${row.price1}</p>
+                    <p className={`text-xs text-white`}>
+                      {row.change1 > 0 ? '+' : ''}{row.change1}%
+                    </p>
+                  </div>
+                </div>
+
+                {/* Stock 2 */}
+                <div 
+                  className={`flex flex-col rounded-xl items-center p-4 ${row.change2 > 0 ? 'bg-green-500 bg-opacity-50' : 'bg-red-500 bg-opacity-70'}`}
+                >
+                  <p className="font text-2xl text-white">{row.stock2}</p>
+                  <div className="flex items-center space-x-2">
+                    <p className="text-sm text-white">${row.price2}</p>
+                    <p className={`text-xs text-white`}>
+                      {row.change2 > 0 ? '+' : ''}{row.change2}%
+                    </p>
+                  </div>
+                </div>
+
+                {/* Algo Score */}
+                <div className="font text-2xl p-6">{row.algo}</div>
+
+                {/* Residue Score */}
+                <div className="font text-2xl p-6">{row.residue}</div>
+              </div>
+            </Link>
+          ))}
         </div>
-
-        {/* Stock 2 */}
-        <div 
-          className={`flex flex-col rounded-xl items-center p-4 ${row.change2 > 0 ? 'bg-green-500' : 'bg-red-500'}`}
-        >
-          <p className="font text-2xl text-white">{row.stock2}</p>
-          <div className="flex items-center space-x-2">
-            <p className="text-sm text-white">${row.price2}</p>
-            <p className={`text-xs text-white`}>
-              {row.change2 > 0 ? '+' : ''}{row.change2}%
-            </p>
-          </div>
-        </div>
-
-        {/* Algo Score */}
-        <div className="font text-2xl p-6">{row.algo}</div>
-
-        {/* Residue Score */}
-        <div className="font text-2xl p-6">{row.residue}</div>
-      </div>
-    </Link>
-  ))}
-</div>
-
       </div>
     </div>
   );

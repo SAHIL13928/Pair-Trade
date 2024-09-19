@@ -39,12 +39,12 @@ function StockDetails() {
   };
 
   return (
-    <div className="page-container p-6 min-h-screen">
+    <div className="page-container p-5 min-h-screen">
       <div className="max-w-[62%] mr-auto">
         {/* Trading Formula Section */}
-        <div className=" bg-white shadow rounded-lg border-2 mb-4 h-auto">
+        <div className=" bg-white rounded-lg border- mb-4 h-auto">
   {/* Content of the box */}
-  <div className="pt-4 pb-4 px-4">
+  <div className="pt-2 pb-4 px-4">
     <div className="grid grid-cols-4 h-full">
       {/* Top-left: Regression Equation */}
       <div className="col-span-2 flex items-start justify-start">
@@ -74,62 +74,56 @@ function StockDetails() {
 
 
 
-        {/* First Row (Similar to MainContent) */}
-        <div className="rounded-lg border-2  bg-white mb-5 p-0">
-          <div className="grid text-center grid-cols-4 gap-0">
-            {/* Stock 1 */}
-            <div className={`flex flex-col items-center p-4 ${row.change1 > 0 ? 'bg-green-500' : 'bg-red-500'} text-white`} style={{ margin: 0 }}>
-              <p className=" text-2xl mb-1">{row.stock1}</p>
-              <div className="flex items-center space-x-2">
-                <p className="text-sm">${row.price1}</p>
-                <p className={`text-xs ${row.change1 > 0 ? 'text-green-300' : 'text-red-300'}`}>
-                  {row.change1 > 0 ? '+' : ''}{row.change1}%
-                </p>
-              </div>
-            </div>
-            
-            {/* Stock 2 */}
-            <div className={`flex flex-col items-center p-4 ${row.change2 > 0 ? 'bg-green-500' : 'bg-red-500'} text-white`} style={{ margin: 0 }}>
-              <p className=" text-2xl mb-1">{row.stock2}</p>
-              <div className="flex items-center space-x-2">
-                <p className="text-sm">${row.price2}</p>
-                <p className={`text-xs ${row.change2 > 0 ? 'text-green-300' : 'text-red-300'}`}>
-                  {row.change2 > 0 ? '+' : ''}{row.change2}%
-                </p>
-              </div>
-            </div>
-            
-            {/* Algo Score */}
-            <div className=" text-2xl p-4">
-              {row.algo}
-            </div>
-            
-            {/* Residue Score */}
-            <div className=" text-2xl p-4">
-              
-                {row.residue}
-              
-            </div>
-          </div>
-        </div>
-
-        {/* Second Row for BUY@, SHORT@, Target%, RR@ */}
-        <div className="rounded-lg border bg-white mb-5 p-0">
-          <div className="grid text-center grid-cols-4 gap-0">
-            <div className=" text-xl p-4">{`BUY @ ${row.buyPrice}`}</div>
-            <div className=" text-xl p-4">{`SHORT @ ${row.shortPrice}`}</div>
-            <div className=" text-xl p-4">{`Target % ${row.targetPercentage}`}</div>
-            <div className=" text-xl p-4">{`RR ${row.rrRatio}`}</div>
-          </div>
-        </div>
+       {/* First Row (Similar to MainContent) */}
+<div className="rounded-lg bg-white mb-5 p-0">
+  <div className="grid text-center grid-cols-4 gap-0">
+    {/* Stock 1 */}
+    <div className="flex flex-col rounded-xl items-center p-4 space-y-1 text-white" 
+      style={{ backgroundColor: row.change1 > 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.7)', margin: 0 }}>
+      <p className="text-2xl mb-1">{row.stock1}</p>
+      <div className="flex items-center space-x-2">
+        <p className="text-sm">${row.price1}</p>
+        <p className="text-xs">
+          {row.change1 > 0 ? '+' : ''}{row.change1}%
+        </p>
+      </div>
+      <p className="text-xs font-bold">{`BUY @ ${row.buyPrice}`}</p> {/* Added under Stock 1 */}
+    </div>
+    
+    {/* Stock 2 */}
+    <div className="flex flex-col rounded-xl items-center p-4 space-y-1 text-white"
+      style={{ backgroundColor: row.change2 > 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.7)', margin: 0 }}>
+      <p className="text-2xl mb-1">{row.stock2}</p>
+      <div className="flex items-center space-x-2">
+        <p className="text-sm">${row.price2}</p>
+        <p className="text-xs">
+          {row.change2 > 0 ? '+' : ''}{row.change2}%
+        </p>
+      </div>
+      <p className="text-xs font-bold">{`SHORT @ ${row.shortPrice}`}</p> {/* Added under Stock 2 */}
+    </div>
+    
+    {/* Algo Score */}
+    <div className="flex flex-col justify-between">
+      <div className="text-2xl py-4 p-4">{row.algo}</div>
+      <div className="text-xs font-bold p-4">{`Target % ${row.targetPercentage}`}</div> {/* Target % in the bottom-right */}
+    </div>
+    
+    {/* Residue Score */}
+    <div className="flex flex-col justify-between">
+      <div className="text-2xl py-4 p-4">{row.residue}</div>
+      <div className="text-xs font-bold p-4">{`RR ${row.rrRatio}`}</div> {/* RR in the bottom-right */}
+    </div>
+  </div>
+</div>
 
         {/* Graph Section */}
-        <div className="bg-white p-4 shadow rounded-lg mb-5 border-2 " style={{ height: '400px' }}>
-          <h3 className="text-lg font-bold mb-4 text-center">Price Changes in Last 24 Hours</h3>
+        <div className="bg-white p-4  rounded-lg mb-6 border-2 " style={{ height: '400px', width: '100%'  }}>
+          <h3 className="text-lg font-bold pl-2">Price Changes in Last 24 Hours</h3>
           <Line
             data={graphData}
             options={{
-              maintainAspectRatio: true,
+              maintainAspectRatio: false,
               responsive: true,
             }}
           />
@@ -137,10 +131,10 @@ function StockDetails() {
 
        
         {/* Past Trades Table */}
-        <div className="bg-white shadow rounded-lg border-2  ">
-          <div className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-800 p-3 rounded-t-lg">
-            <h3 className="text-lg font-bold text-white text-center">Past Trades (Last 30 Days)</h3>
-          </div>
+        <div className="bg-white rounded-lg border-2  ">
+          
+            <h3 className="text-lg font-bold pl-5 py-3 ">Past Trades (Last 30 Days)</h3>
+        
           <div className="p-4">
             <table className="min-w-full table-auto">
               <thead>
