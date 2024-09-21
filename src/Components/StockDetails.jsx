@@ -42,31 +42,36 @@ function StockDetails() {
     <div className="page-container p-5 min-h-screen">
       <div className="max-w-[62%] mr-auto">
         {/* Trading Formula Section */}
+        <h2 className='text-2xl font-bold text-cebter mb-4'>PEPSI-COKE Pair</h2>
         <div className=" bg-white rounded-lg border- mb-4 h-auto">
+          
   {/* Content of the box */}
-  <div className="pt-2 pb-4 px-4">
-    <div className="grid grid-cols-4 h-full">
-      {/* Top-left: Regression Equation */}
-      <div className="col-span-2 flex items-start justify-start">
-        <p className="font-bold pl-48">Regression Equation </p>
-      </div>
+<div className="pt-2 pb-4 px-4">
+  <div className="grid grid-cols-4 h-full">
+    {/* Top-left: Regression Equation */}
+    <div className="col-span-2 flex items-center justify-start">
+      <p className="font-bold pl-4">Regression Equation</p>
+    </div>
 
-      {/* Middle content (spanning full width) */}
-      <div className="col-span-4 text-center py-3">
-        <p className="text-2xl pl-2">PEPSI = 2 COKE + 5 + RESIDUAL</p>
-      </div>
+    {/* Middle content (spanning full width) */}
+    <div className="col-span-4 text-center ">
+      <p className="text-2xl pl-2">PEPSI = 2 COKE + 5 + RESIDUAL</p>
+    </div>
 
-      {/* Bottom-left: Correlation */}
-      <div className="col-span-2 flex items-end justify-start">
-        <p className="font-bold pl-48">Correlation: 0.95</p>
-      </div>
+    {/* Bottom-left: Correlation */}
+    <div className="col-span-2 flex items-center justify-start">
+      <p className="font-bold pl-4">Correlation:</p>
+      <p className="text-sm ml-1">0.95</p>
+    </div>
 
-      {/* Bottom-right: Co-integration */}
-      <div className="col-span-2 flex items-end justify-end">
-        <p className="font-bold mr-48">Co-integration: 0.05</p>
-      </div>
+    {/* Bottom-right: Co-integration */}
+    <div className="col-span-2 flex items-center justify-end">
+      <p className="font-bold mr-1">Co-integration:</p>
+      <p className="text-sm font-bold">{0.05}</p>
     </div>
   </div>
+</div>
+
 </div>
 
 
